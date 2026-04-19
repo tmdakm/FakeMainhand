@@ -6,6 +6,7 @@
   "description": "A mod that makes your main hand different on client side and server side.",
   "authors": [ "Huangyu" ],
   "contact": {
+    "homepage": "https://modrinth.com/mod/fakemainhand",
     "sources": "https://github.com/tmdakm/FakeMainhand"
   },
   "license": "Apache License 2.0",
