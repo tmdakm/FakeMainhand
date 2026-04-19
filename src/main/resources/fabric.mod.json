@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "fakemainhand",
+  "version": "${version}",
+  "name": "FakeMainhand",
+  "description": "A mod that makes your main hand different on client side and server side.",
+  "authors": [ "Huangyu" ],
+  "contact": {
+    "sources": "https://github.com/tmdakm/FakeMainhand"
+  },
+  "license": "Apache License 2.0",
+  "icon": "assets/fakemainhand/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "win.huangyu.fakemainhand.client.FakemainhandClient"
+    ],
+    "main": [
+      "win.huangyu.fakemainhand.Fakemainhand"
+    ],
+    "modmenu": [ "win.huangyu.fakemainhand.ModMenuApiImpl" ]
+  },
+  "mixins": [
+    "fakemainhand.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

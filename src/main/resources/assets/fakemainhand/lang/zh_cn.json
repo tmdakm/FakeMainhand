@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.fakemainhand.title": "虚假主手",
+  "text.autoconfig.fakemainhand.option.enableMod": "启用模组",
+  "text.autoconfig.fakemainhand.option.armServer": "服务端主手",
+  "text.autoconfig.fakemainhand.option.armServer.@Tooltip": "服务端和别人看到的主手，可能需要重新进入服务器生效。\n LEFT - 左手\n RIGHT - 右手",
+  "text.autoconfig.fakemainhand.option.armClient": "客户端主手",
+  "text.autoconfig.fakemainhand.option.armClient.@Tooltip": "你本地显示的主手\n LEFT - 左手\n RIGHT - 右手"
+}

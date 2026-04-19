@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.fakemainhand.title": "Fake Main Hand",
+  "text.autoconfig.fakemainhand.option.enableMod": "Enable mod",
+  "text.autoconfig.fakemainhand.option.armServer": "Server side main hand.",
+  "text.autoconfig.fakemainhand.option.armServer.@Tooltip": "Main hand on server side and other players.\nYou may have to rejoin the server to apply this.\n LEFT - Left hand\n RIGHT - Right hand",
+  "text.autoconfig.fakemainhand.option.armClient": "Client side main hand",
+  "text.autoconfig.fakemainhand.option.armClient.@Tooltip": "Main hand on client side (yourself).\n LEFT - Left hand\n RIGHT - Right hand"
+}
