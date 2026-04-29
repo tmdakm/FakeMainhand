@@ -20,9 +20,10 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Arm;
 import net.minecraft.network.packet.c2s.common.SyncedClientOptions;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Slice;
 import win.huangyu.fakemainhand.ModConfig;
 
 @Mixin(SyncedClientOptions.class)
@@ -44,29 +45,22 @@ public abstract class SyncedClientOptionsMixin {
 //        return original;
 //    }
 
-    /**
-     * @author Huangyu
-     * @reason Overwrite the main arm that send to server
-     */
-    @Overwrite
-    public void write(PacketByteBuf buf) {
-        SyncedClientOptions self = (SyncedClientOptions)(Object)this;
+    @Shadow
+    public abstract Arm mainArm();
 
-        buf.writeString(self.language());
-        buf.writeByte(self.viewDistance());
-        buf.writeEnumConstant(self.chatVisibility());
-        buf.writeBoolean(self.chatColorsEnabled());
-        buf.writeByte(self.playerModelParts());
 
+    @Redirect(method = "write",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/network/PacketByteBuf;writeEnumConstant(Ljava/lang/Enum;)Lnet/minecraft/network/PacketByteBuf;",
+                    ordinal = 1))
+    private PacketByteBuf redirectMainArm(PacketByteBuf buf, Enum<?> e){
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         if(config.enableMod){
             buf.writeEnumConstant(config.armServer);
         }else{
-            buf.writeEnumConstant(self.mainArm());
+            buf.writeEnumConstant(mainArm());
         }
 
-        buf.writeBoolean(self.filtersText());
-        buf.writeBoolean(self.allowsServerListing());
-        buf.writeEnumConstant(self.particleStatus());
+        return buf;
     }
 }
